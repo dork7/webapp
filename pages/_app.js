@@ -7,9 +7,7 @@ import Footer from "../src/components/Footer";
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider>
-      <NavBar />
       <Component {...pageProps} />
-      <Footer />
     </ChakraProvider>
   );
 }
