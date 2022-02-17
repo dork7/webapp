@@ -50,7 +50,7 @@ const NavLink = ({ children, navChange }) => {
 const NavBar = (navChange) => {
   console.log("navChange", navChange);
   const navLinks = [
-    { name: "Home", path: "/" },
+    { name: "Home", path: "/home" },
     {
       name: "Generate Website",
       path: "/generate-app",
@@ -70,7 +70,13 @@ const NavBar = (navChange) => {
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+      <Box
+        bg={useColorModeValue("gray.100", "gray.900")}
+        px={4}
+        w="100%"
+        position={"fixed"}
+        zIndex={999}
+      >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}

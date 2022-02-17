@@ -10,9 +10,20 @@ import {
   scrollSpy,
   scroller,
 } from "react-scroll";
+import { useEffect } from "react";
+import { Splash } from "./splash";
 const HomePage = () => {
+  useEffect(() => {
+    scroll.scrollToTop();
+  }, []);
+
   const navChange = (navLink) => {
     console.log("navLink", navLink);
+    scroller.scrollTo(navLink.split("/")[1], {
+      duration: 800,
+      delay: 0,
+      smooth: "easeInOutQuart",
+    });
   };
 
   const scrollToTop = () => {
@@ -54,18 +65,20 @@ const HomePage = () => {
   return (
     <>
       <NavBar {...{ navChange }} />
-      <Button onClick={scrollTo}>go to 3</Button>
-      <Button onClick={scrollToWithContainer}>multi</Button>
       <Box>
-        <Element name="test1" className="element">
-          <Box h="100vh">test 1</Box>
+        {/* <Button onClick={scrollTo}>go to 3</Button>
+        <Button onClick={scrollToWithContainer}>multi</Button> */}
+        <Element name="home" className="element">
+          <Box h="100vh" bg="gray">
+            <Splash />
+          </Box>
         </Element>
 
-        <Element name="test2" className="element">
-          <Box h="100vh">test 2</Box>
+        <Element name="generate-app" className="element">
+          <Box h="100vh">generate-app</Box>
         </Element>
-        <Element name="test3" className="element">
-          <Box h="100vh">test 3</Box>
+        <Element name="about" className="element">
+          <Box h="100vh">About</Box>
         </Element>
         <Element
           className="element"
@@ -74,6 +87,7 @@ const HomePage = () => {
             position: "relative",
             height: "200px",
             overflow: "scroll",
+            scrollbarWidth: "none",
             marginBottom: "100px",
           }}
         >
