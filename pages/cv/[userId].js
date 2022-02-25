@@ -11,9 +11,12 @@ import {
 } from "react-scroll";
 import { Box, Button } from "@chakra-ui/react";
 import Splash from "./components/Splash";
+import About from "./components/About";
+import Resume from "./components/Resume";
+import Experience from "./components/Experience";
 const CV = () => {
   useEffect(() => {
-    scroll.scrollToTop();
+    // scroll.scrollToTop();
   }, []);
 
   const navChange = (navLink) => {
@@ -75,16 +78,17 @@ const CV = () => {
         {/* <Button onClick={scrollTo}>go to 3</Button>
         <Button onClick={scrollToWithContainer}>multi</Button> */}
         <Element name="home" className="element">
-          <Box h="100vh" bg="gray">
-            <Splash {...{ downButtonClicked }} />
-          </Box>
+          <Splash {...{ downButtonClicked }} />
         </Element>
 
         <Element name="about" className="element">
-          <Box h="100vh">about</Box>
+          <About />
         </Element>
         <Element name="resume" className="element">
-          <Box h="100vh">resume</Box>
+          <Box h="100vh">
+            <Resume />
+            <Experience />
+          </Box>
         </Element>
         <Element name="works" className="element">
           <Box h="100vh">works</Box>
