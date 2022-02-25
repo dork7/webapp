@@ -1,7 +1,6 @@
-import { Box, Button } from "@chakra-ui/react";
-import NavBar from "../src/components/NavBar";
-import Footer from "../src/components/Footer";
-import * as Scroll from "react-scroll";
+import React from "react";
+import NavBar from "./components/NavBar";
+import { useEffect } from "react";
 import {
   Link,
   Element,
@@ -10,9 +9,9 @@ import {
   scrollSpy,
   scroller,
 } from "react-scroll";
-import { useEffect } from "react";
-import { Splash } from "../src/components/splash";
-const HomePage = () => {
+import { Box, Button } from "@chakra-ui/react";
+import Splash from "./components/Splash";
+const CV = () => {
   useEffect(() => {
     scroll.scrollToTop();
   }, []);
@@ -61,6 +60,13 @@ const HomePage = () => {
       })
     );
   };
+  const downButtonClicked = () => {
+    scroller.scrollTo("about", {
+      duration: 800,
+      delay: 0,
+      smooth: "easeInOutQuart",
+    });
+  };
 
   return (
     <>
@@ -70,15 +76,21 @@ const HomePage = () => {
         <Button onClick={scrollToWithContainer}>multi</Button> */}
         <Element name="home" className="element">
           <Box h="100vh" bg="gray">
-            <Splash />
+            <Splash {...{ downButtonClicked }} />
           </Box>
         </Element>
 
-        <Element name="generate-cv" className="element">
-          <Box h="100vh">generate-cv</Box>
-        </Element>
         <Element name="about" className="element">
-          <Box h="100vh">About</Box>
+          <Box h="100vh">about</Box>
+        </Element>
+        <Element name="resume" className="element">
+          <Box h="100vh">resume</Box>
+        </Element>
+        <Element name="works" className="element">
+          <Box h="100vh">works</Box>
+        </Element>
+        <Element name="contact" className="element">
+          <Box h="100vh">contact</Box>
         </Element>
         <Element
           className="element"
@@ -111,10 +123,8 @@ const HomePage = () => {
         </Element>
         <Button onClick={scrollToTop}>top</Button>
       </Box>
-
-      <Footer />
     </>
   );
 };
 
-export default HomePage;
+export default CV;

@@ -17,6 +17,7 @@ import {
   Stack,
   useColorMode,
   Center,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -25,7 +26,6 @@ import {
   MoonIcon,
   SunIcon,
 } from "@chakra-ui/icons";
-import UserInfoCard from "./UserInfoCard";
 
 const NavLink = ({ children, navChange }) => {
   return (
@@ -49,84 +49,69 @@ const NavLink = ({ children, navChange }) => {
 };
 
 const NavBar = (navChange) => {
-  console.log("navChange", navChange);
   const navLinks = [
     { name: "Home", path: "/home" },
     {
-      name: "Generate CV",
-      path: "/generate-cv",
-    },
-    {
-      name: "About Us",
+      name: "About",
       path: "/about",
     },
     {
-      name: "CV",
-      path: "/cv/123",
-      external: true,
+      name: "Resume",
+      path: "/resume",
+    },
+    {
+      name: "Works",
+      path: "/works",
+      //   external: true,
+    },
+    {
+      name: "Contact",
+      path: "/contact",
+      //   external: true,
     },
   ];
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const boxDisplayHack = useBreakpointValue({ base: "none", md: "1" });
 
   return (
     <>
       <Box
-        bg={useColorModeValue("gray.100", "gray.900")}
+        // bg={useColorModeValue("gray.100", "gray.900")}
         px={4}
         w="100%"
         position={"fixed"}
         zIndex={999}
       >
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <IconButton
-            size={"md"}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={"Open Menu"}
-            display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
-          />
-          <HStack spacing={8} alignItems={"center"}>
-            <Box>Logo</Box>
-            <HStack
-              as={"nav"}
-              spacing={4}
-              display={{ base: "none", md: "flex" }}
-            >
-              {navLinks.map((link) => (
-                <NavLink key={link} {...navChange}>
-                  {link}
-                </NavLink>
-              ))}
+        <Flex justifyContent={"space-between"}>
+          <Box display={boxDisplayHack}></Box>
+          <Flex h={16} alignItems={"center"} justifyContent={"center"}>
+            <IconButton
+              size={"md"}
+              icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+              aria-label={"Open Menu"}
+              display={{ md: "none" }}
+              onClick={isOpen ? onClose : onOpen}
+            />
+            <HStack spacing={8} alignItems={"center"}>
+              {/* <Box>Logo</Box> */}
+              <HStack
+                as={"nav"}
+                spacing={4}
+                display={{ base: "none", md: "flex" }}
+              >
+                {navLinks.map((link) => (
+                  <NavLink key={link} {...navChange}>
+                    {link}
+                  </NavLink>
+                ))}
+              </HStack>
             </HStack>
-          </HStack>
+          </Flex>
           <Flex alignItems={"center"}>
             <Button onClick={toggleColorMode} mx={4}>
               {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
             </Button>
-            <Menu>
-              <MenuButton
-                as={Button}
-                rounded={"full"}
-                variant={"link"}
-                cursor={"pointer"}
-                minW={0}
-              >
-                <Avatar
-                  size={"sm"}
-                  src={"https://avatars.dicebear.com/api/male/username.svg"}
-                />
-              </MenuButton>
-              <MenuList alignItems={"center"}>
-                <UserInfoCard />
-
-                <br />
-                <MenuDivider />
-                <MenuItem>Your Servers</MenuItem>
-                <MenuItem>Account Settings</MenuItem>
-                <MenuItem>Logout</MenuItem>
-              </MenuList>
-            </Menu>
           </Flex>
         </Flex>
 
