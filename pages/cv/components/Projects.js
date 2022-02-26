@@ -19,7 +19,7 @@ import {
 import React from "react";
 import { useUserDataSet } from "../hooks/useUserDataSet";
 
-const Skills = () => {
+const Projects = () => {
   const user = useUserDataSet();
   const imageLocationX = useBreakpointValue({ base: "center", lg: "flex-end" });
   const imageLocationY = useBreakpointValue({ base: "flex-end", md: "center" });
@@ -39,29 +39,31 @@ const Skills = () => {
         zIndex: -1,
         content: '" "',
       }}
+      // p={16}
     >
       {" "}
       <Box
         d="flex"
         justifyContent={{ base: "center", lg: "flex-end" }}
         // alignItems={{ base: "flex-end", lg: "center" }}
-        px={16}
+        // px={16}
+        p={16}
       >
         <Text as="u" fontSize={{ base: "md", md: "lg", lg: "xl" }}>
-          Skills
+          Projects
         </Text>
       </Box>
-      <Box
-        direction="rows"
+      <Flex
+        direction="column"
         alignItems="start"
         justifyContent="center"
-        w="60%"
         pr={{ base: 4, lg: 12 }}
-        pb={16}
+        py={16}
 
         // w="full"
       >
-        {user?.skills?.map((skill) => {
+        projects
+        {user?.projects?.map((exp) => {
           return (
             <>
               <Badge
@@ -69,19 +71,51 @@ const Skills = () => {
                 bgColor={useColorModeValue("gray.300", "brand.600")}
                 px={3}
                 py={1}
-                m={1}
+                mb={3}
                 variant="solid"
                 colorScheme="brand"
                 rounded="full"
               >
-                {skill}
+                {exp.designation}
               </Badge>
+              <Text
+                // mb={6}
+                p={2}
+                fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                //   fontWeight="bold"
+                color={useColorModeValue("brand.600", "gray.300")}
+                lineHeight="shorter"
+                w="75%"
+              >
+                {exp.company}
+              </Text>
+              <Text
+                // mb={6}
+                pl={2}
+                fontSize={{ base: "sm", md: "sm", lg: "sm" }}
+                //   fontWeight="bold"
+                color={useColorModeValue("brand.600", "gray.300")}
+                lineHeight="shorter"
+              >
+                {exp.year}
+              </Text>
+              <Text
+                mb={6}
+                p={2}
+                fontSize={{ base: "sm", md: "md", lg: "md" }}
+                //   fontWeight="bold"
+                color={useColorModeValue("brand.600", "gray.300")}
+                lineHeight="shorter"
+                w="75%"
+              >
+                {exp.place}{" "}
+              </Text>
             </>
           );
         })}
-      </Box>
+      </Flex>
     </SimpleGrid>
   );
 };
 
-export default Skills;
+export default Projects;

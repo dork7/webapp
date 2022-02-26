@@ -15,6 +15,7 @@ import About from "./components/About";
 import Resume from "./components/Resume";
 import Experience from "./components/Experience";
 import Skills from "./components/Skills";
+import Projects from "./components/Projects";
 const CV = () => {
   useEffect(() => {
     // scroll.scrollToTop();
@@ -86,14 +87,14 @@ const CV = () => {
           <About />
         </Element>
         <Element name="resume" className="element">
-          <Box h="100vh">
-            <Resume />
-            <Experience />
-            <Skills />
-          </Box>
+          <Resume />
+          <Experience />
+          <Skills />
         </Element>
         <Element name="works" className="element">
-          <Box h="100vh">works</Box>
+          <Box h="100vh">
+            <Projects />
+          </Box>
         </Element>
         <Element name="contact" className="element">
           <Box h="100vh">contact</Box>
