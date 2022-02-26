@@ -14,6 +14,7 @@ import Splash from "./components/Splash";
 import About from "./components/About";
 import Resume from "./components/Resume";
 import Experience from "./components/Experience";
+import Skills from "./components/Skills";
 const CV = () => {
   useEffect(() => {
     // scroll.scrollToTop();
@@ -88,6 +89,7 @@ const CV = () => {
           <Box h="100vh">
             <Resume />
             <Experience />
+            <Skills />
           </Box>
         </Element>
         <Element name="works" className="element">

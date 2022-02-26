@@ -19,7 +19,7 @@ import {
 import React from "react";
 import { useUserDataSet } from "../hooks/useUserDataSet";
 
-const Experience = () => {
+const Skills = () => {
   const user = useUserDataSet();
   const imageLocationX = useBreakpointValue({ base: "center", lg: "flex-end" });
   const imageLocationY = useBreakpointValue({ base: "flex-end", md: "center" });
@@ -48,19 +48,20 @@ const Experience = () => {
         px={16}
       >
         <Text as="u" fontSize={{ base: "md", md: "lg", lg: "xl" }}>
-          Work
+          Skills
         </Text>
       </Box>
-      <Flex
-        direction="column"
+      <Box
+        direction="rows"
         alignItems="start"
         justifyContent="center"
+        w="60%"
         pr={{ base: 4, lg: 12 }}
         // py={16}
 
         // w="full"
       >
-        {user.experience.map((exp) => {
+        {user?.skills?.map((skill) => {
           return (
             <>
               <Badge
@@ -68,51 +69,19 @@ const Experience = () => {
                 bgColor={useColorModeValue("gray.300", "brand.600")}
                 px={3}
                 py={1}
-                mb={3}
+                m={1}
                 variant="solid"
                 colorScheme="brand"
                 rounded="full"
               >
-                {exp.designation}
+                {skill}
               </Badge>
-              <Text
-                // mb={6}
-                p={2}
-                fontSize={{ base: "md", md: "lg", lg: "xl" }}
-                //   fontWeight="bold"
-                color={useColorModeValue("brand.600", "gray.300")}
-                lineHeight="shorter"
-                w="75%"
-              >
-                {exp.company}
-              </Text>
-              <Text
-                // mb={6}
-                pl={2}
-                fontSize={{ base: "sm", md: "sm", lg: "sm" }}
-                //   fontWeight="bold"
-                color={useColorModeValue("brand.600", "gray.300")}
-                lineHeight="shorter"
-              >
-                {exp.year}
-              </Text>
-              <Text
-                mb={6}
-                p={2}
-                fontSize={{ base: "sm", md: "md", lg: "md" }}
-                //   fontWeight="bold"
-                color={useColorModeValue("brand.600", "gray.300")}
-                lineHeight="shorter"
-                w="75%"
-              >
-                {exp.place}{" "}
-              </Text>
             </>
           );
         })}
-      </Flex>
+      </Box>
     </SimpleGrid>
   );
 };
 
-export default Experience;
+export default Skills;
