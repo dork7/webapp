@@ -14,7 +14,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { Link } from "react-scroll";
+import { BsArrowUpShort } from "react-icons/bs";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 const NavLink = ({ children, active, handleSetActive }) => {
   return (
@@ -86,7 +87,7 @@ const NavBar = (navChange) => {
         px={4}
         w="100%"
         position={"fixed"}
-        zIndex={999}
+        zIndex={998}
       >
         <Flex justifyContent={"space-between"}>
           <Box display={useBreakpointValue({ base: "none", md: "1" })}></Box>
@@ -139,7 +140,17 @@ const NavBar = (navChange) => {
           </Box>
         ) : null}
       </Box>
-
+      {active !== "home" && (
+        <Button
+          zIndex={998}
+          position={"fixed"}
+          bottom="40px"
+          right={"40px"}
+          onClick={() => scroll.scrollToTop()}
+        >
+          <BsArrowUpShort size="md" />
+        </Button>
+      )}
       {/* <Box p={4}>Main Content Here</Box> */}
     </>
   );
