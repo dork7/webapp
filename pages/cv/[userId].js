@@ -1,21 +1,19 @@
-import React from "react";
-import NavBar from "./components/NavBar";
-import { useEffect } from "react";
+import { Box, Button } from "@chakra-ui/react";
+import React, { useEffect } from "react";
 import {
-  Link,
+  animateScroll as scroll,
   Element,
   Events,
-  animateScroll as scroll,
-  scrollSpy,
   scroller,
 } from "react-scroll";
-import { Box, Button } from "@chakra-ui/react";
-import Splash from "./components/Splash";
 import About from "./components/About";
-import Resume from "./components/Resume";
 import Experience from "./components/Experience";
-import Skills from "./components/Skills";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 import Projects from "./components/Projects";
+import Resume from "./components/Resume";
+import Skills from "./components/Skills";
+import Splash from "./components/Splash";
 const CV = () => {
   useEffect(() => {
     // scroll.scrollToTop();
@@ -91,44 +89,11 @@ const CV = () => {
           <Experience />
           <Skills />
         </Element>
-        <Element name="works" className="element">
-          <Box h="100vh">
-            <Projects />
-          </Box>
+        <Element name="projects" className="element">
+          <Projects />
         </Element>
-        <Element name="contact" className="element">
-          <Box h="100vh">contact</Box>
-        </Element>
-        <Element
-          className="element"
-          id="scroll-container"
-          style={{
-            position: "relative",
-            height: "200px",
-            overflow: "scroll",
-            scrollbarWidth: "none",
-            marginBottom: "100px",
-          }}
-        >
-          <Element
-            name="scroll-container-first-element"
-            style={{
-              marginBottom: "200px",
-            }}
-          >
-            first element inside container
-          </Element>
-
-          <Element
-            name="scroll-container-second-element"
-            style={{
-              marginBottom: "200px",
-            }}
-          >
-            second element inside container
-          </Element>
-        </Element>
-        <Button onClick={scrollToTop}>top</Button>
+        {/* <Button onClick={scrollToTop}>top</Button> */}
+        <Footer />
       </Box>
     </>
   );

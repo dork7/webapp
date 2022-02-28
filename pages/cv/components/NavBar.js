@@ -1,31 +1,17 @@
-import { ReactNode } from "react";
+import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Flex,
-  Avatar,
-  HStack,
-  Link,
-  IconButton,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
-  useColorModeValue,
+  Flex,
+  HStack,
+  IconButton,
+  Link,
   Stack,
-  useColorMode,
-  Center,
   useBreakpointValue,
+  useColorMode,
+  useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  AddIcon,
-  MoonIcon,
-  SunIcon,
-} from "@chakra-ui/icons";
 
 const NavLink = ({ children, navChange }) => {
   return (
@@ -60,15 +46,15 @@ const NavBar = (navChange) => {
       path: "/resume",
     },
     {
-      name: "Works",
-      path: "/works",
+      name: "Projects",
+      path: "/projects",
       //   external: true,
     },
-    {
-      name: "Contact",
-      path: "/contact",
-      //   external: true,
-    },
+    // {
+    //   name: "Contact",
+    //   path: "/contact",
+    //   //   external: true,
+    // },
   ];
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();

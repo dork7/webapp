@@ -1,120 +1,34 @@
 import {
-  Badge,
   Box,
-  Button,
-  chakra,
-  Flex,
-  Image,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Link,
+  Container,
+  Heading,
+  HStack,
   SimpleGrid,
   Stack,
-  Text,
-  useBreakpointValue,
-  useColorModeValue,
-  VisuallyHidden,
 } from "@chakra-ui/react";
 import React from "react";
 import { useUserDataSet } from "../hooks/useUserDataSet";
-
+import ProjectCard from "./Cards/ProjectCard";
 const Projects = () => {
   const user = useUserDataSet();
-  const imageLocationX = useBreakpointValue({ base: "center", lg: "flex-end" });
-  const imageLocationY = useBreakpointValue({ base: "flex-end", md: "center" });
 
   return (
-    <SimpleGrid
-      columns={{ base: 1, md: 2 }}
-      spacing={0}
-      _after={{
-        bg: "brand.500",
-        opacity: 0.25,
-        pos: "absolute",
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        zIndex: -1,
-        content: '" "',
-      }}
-      // p={16}
-    >
-      {" "}
-      <Box
-        d="flex"
-        justifyContent={{ base: "center", lg: "flex-end" }}
-        // alignItems={{ base: "flex-end", lg: "center" }}
-        // px={16}
-        p={16}
-      >
-        <Text as="u" fontSize={{ base: "md", md: "lg", lg: "xl" }}>
-          Projects
-        </Text>
+    <>
+      <Box pt={{ base: 4, md: 14, lg: 16 }} px={{ base: 4, md: 14, lg: 16 }}>
+        <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
+          <Heading as="u" fontSize={"2xl"}>
+            Projects
+          </Heading>
+        </Stack>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
+          {user?.projects.map((project, idx) => (
+            <HStack key={idx} align={"top"}>
+              <ProjectCard {...{ project }} />
+            </HStack>
+          ))}
+        </SimpleGrid>
       </Box>
-      <Flex
-        direction="column"
-        alignItems="start"
-        justifyContent="center"
-        pr={{ base: 4, lg: 12 }}
-        py={16}
-
-        // w="full"
-      >
-        projects
-        {user?.projects?.map((exp) => {
-          return (
-            <>
-              <Badge
-                color={useColorModeValue("brand.600", "gray.300")}
-                bgColor={useColorModeValue("gray.300", "brand.600")}
-                px={3}
-                py={1}
-                mb={3}
-                variant="solid"
-                colorScheme="brand"
-                rounded="full"
-              >
-                {exp.designation}
-              </Badge>
-              <Text
-                // mb={6}
-                p={2}
-                fontSize={{ base: "md", md: "lg", lg: "xl" }}
-                //   fontWeight="bold"
-                color={useColorModeValue("brand.600", "gray.300")}
-                lineHeight="shorter"
-                w="75%"
-              >
-                {exp.company}
-              </Text>
-              <Text
-                // mb={6}
-                pl={2}
-                fontSize={{ base: "sm", md: "sm", lg: "sm" }}
-                //   fontWeight="bold"
-                color={useColorModeValue("brand.600", "gray.300")}
-                lineHeight="shorter"
-              >
-                {exp.year}
-              </Text>
-              <Text
-                mb={6}
-                p={2}
-                fontSize={{ base: "sm", md: "md", lg: "md" }}
-                //   fontWeight="bold"
-                color={useColorModeValue("brand.600", "gray.300")}
-                lineHeight="shorter"
-                w="75%"
-              >
-                {exp.place}{" "}
-              </Text>
-            </>
-          );
-        })}
-      </Flex>
-    </SimpleGrid>
+    </>
   );
 };
 
