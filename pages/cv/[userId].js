@@ -14,9 +14,10 @@ import Projects from "./components/Projects";
 import Resume from "./components/Resume";
 import Skills from "./components/Skills";
 import Splash from "./components/Splash";
+
 const CV = () => {
   useEffect(() => {
-    // scroll.scrollToTop();
+    scroll.scrollToTop();
   }, []);
 
   const navChange = (navLink) => {

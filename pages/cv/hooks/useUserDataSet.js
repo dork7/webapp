@@ -13,11 +13,13 @@ exports.useUserDataSet = () => {
     links: {
       facebook: "#",
       instagram: "#",
-      linkedin: "https://www.linkedin.com/in/hamzameh/",
+      linkedin: "https://www.linkedin.com/in/hamzameh",
       github: "https://github.com/dork7",
     },
-    aboutMe:
-      "Use this bio section as your way of describing yourself and saying what you do, what technologies you like to use or feel most comfortable with, describing your personality, or whatever else you feel like throwing in.",
+    aboutMe: `Diligent software engineer with 3+ years
+      experience in commercial application
+      development. I’m focused, committed and
+      capable of learning new technology stacks.`,
 
     resumeLink:
       "https://drive.google.com/file/d/1Zv7jcvq4LNS22QV5DnSpxjLYLccSyubX/view?usp=sharing",

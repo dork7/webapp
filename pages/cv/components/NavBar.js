@@ -21,13 +21,22 @@ const NavLink = ({ children, navChange }) => {
       rounded={"md"}
       _hover={{
         textDecoration: "none",
-        bg: useColorModeValue("gray.200", "gray.700"),
+        // bg: useColorModeValue("gray.200", "gray.700"),
+        textColor: "red",
+        transform: "scale(1.05)",
+      }}
+      _focus={{
+        border: "none",
+        textColor: "red",
       }}
       href={children.external ? children.path : "#"}
       isExternal={children.external}
       onClick={() => {
         navChange(children.path);
       }}
+      textColor={"white"}
+      fontFamily="sans-serif"
+      fontWeight={"600"}
     >
       {children.name}
     </Link>
@@ -36,17 +45,17 @@ const NavLink = ({ children, navChange }) => {
 
 const NavBar = (navChange) => {
   const navLinks = [
-    { name: "Home", path: "/home" },
+    { name: "HOME", path: "/home" },
     {
-      name: "About",
+      name: "ABOUT",
       path: "/about",
     },
     {
-      name: "Resume",
+      name: "RESUME",
       path: "/resume",
     },
     {
-      name: "Projects",
+      name: "PROJECTS",
       path: "/projects",
       //   external: true,
     },
@@ -58,7 +67,6 @@ const NavBar = (navChange) => {
   ];
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const boxDisplayHack = useBreakpointValue({ base: "none", md: "1" });
 
   return (
     <>
@@ -70,7 +78,7 @@ const NavBar = (navChange) => {
         zIndex={999}
       >
         <Flex justifyContent={"space-between"}>
-          <Box display={boxDisplayHack}></Box>
+          <Box display={useBreakpointValue({ base: "none", md: "1" })}></Box>
           <Flex h={16} alignItems={"center"} justifyContent={"center"}>
             <IconButton
               size={"md"}
@@ -102,10 +110,17 @@ const NavBar = (navChange) => {
         </Flex>
 
         {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
+          <Box
+            pb={4}
+            display={{ md: "none" }}
+            bg={useColorModeValue("white", "gray.800")}
+            shadow="lg"
+            rounded="lg"
+            overflow="hidden"
+          >
             <Stack as={"nav"} spacing={4}>
               {navLinks.map((link) => (
-                <NavLink key={link} {...{ navChange }}>
+                <NavLink key={link} {...navChange}>
                   {link}
                 </NavLink>
               ))}

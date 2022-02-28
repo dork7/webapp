@@ -17,8 +17,6 @@ import Info from "./Cards/Info";
 import { AiFillDownCircle } from "react-icons/ai";
 
 const Splash = ({ downButtonClicked }) => {
-  const top = useBreakpointValue({ base: "50%", md: "40%" });
-
   const arrowStyles = {
     display: "none",
     cursor: "pointer",
@@ -58,8 +56,6 @@ const Splash = ({ downButtonClicked }) => {
     // },
     {
       img: "https://images.pexels.com/photos/1142950/pexels-photo-1142950.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      label: "Fourth Slide",
-      description: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
     },
     // {
     //   img: "https://images.pexels.com/photos/3124111/pexels-photo-3124111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -101,7 +97,7 @@ const Splash = ({ downButtonClicked }) => {
       justifyContent="center"
     >
       <Flex w="full" pos="relative" overflow="hidden">
-        <Flex h="100vh" w="full" {...carouselStyle}>
+        <Flex h={{ base: "50vh", md: "100vh" }} w="full" {...carouselStyle}>
           {slides.map((slide, sid) => (
             <Box key={`slide-${sid}`} boxSize="full" shadow="md" flex="none">
               <Text
@@ -117,7 +113,7 @@ const Splash = ({ downButtonClicked }) => {
               <Stack
                 p="8px 12px"
                 pos="absolute"
-                top={top}
+                top={{ base: "30%", md: "40%" }}
                 textAlign="center"
                 w="full"
                 mb="8"

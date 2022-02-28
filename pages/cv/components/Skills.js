@@ -39,6 +39,7 @@ const Skills = () => {
         zIndex: -1,
         content: '" "',
       }}
+      px={2}
     >
       {" "}
       <Box
@@ -47,15 +48,13 @@ const Skills = () => {
         // alignItems={{ base: "flex-end", lg: "center" }}
         px={16}
       >
-        <Text as="u" fontSize={{ base: "md", md: "lg", lg: "xl" }}>
+        <Text as="u" fontSize={{ base: "md", md: "lg", lg: "xl" }} pb={2}>
           Skills
         </Text>
       </Box>
       <Box
         direction="rows"
-        alignItems="start"
-        justifyContent="center"
-        w="60%"
+        w={{ base: "100%", md: "70%", lg: "70%" }}
         pr={{ base: 4, lg: 12 }}
         pb={16}
 

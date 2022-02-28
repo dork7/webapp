@@ -39,12 +39,13 @@ const Experience = () => {
         zIndex: -1,
         content: '" "',
       }}
+      px={2}
     >
       {" "}
       <Box
         d="flex"
         justifyContent={{ base: "center", lg: "flex-end" }}
-        // alignItems={{ base: "flex-end", lg: "center" }}
+        alignItems={{ base: "flex-end", lg: "flex-start" }}
         px={16}
       >
         <Text as="u" fontSize={{ base: "md", md: "lg", lg: "xl" }}>
@@ -56,9 +57,6 @@ const Experience = () => {
         alignItems="start"
         justifyContent="center"
         pr={{ base: 4, lg: 12 }}
-        // py={16}
-
-        // w="full"
       >
         {user.experience.map((exp) => {
           return (
@@ -68,7 +66,7 @@ const Experience = () => {
                 bgColor={useColorModeValue("gray.300", "brand.600")}
                 px={3}
                 py={1}
-                mb={3}
+                mb={2}
                 variant="solid"
                 colorScheme="brand"
                 rounded="full"
@@ -76,10 +74,8 @@ const Experience = () => {
                 {exp.designation}
               </Badge>
               <Text
-                // mb={6}
-                p={2}
+                px={2}
                 fontSize={{ base: "md", md: "lg", lg: "xl" }}
-                //   fontWeight="bold"
                 color={useColorModeValue("brand.600", "gray.300")}
                 lineHeight="shorter"
                 w="75%"

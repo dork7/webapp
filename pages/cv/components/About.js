@@ -21,8 +21,6 @@ import { useUserDataSet } from "../hooks/useUserDataSet";
 
 const About = () => {
   const user = useUserDataSet();
-  const imageLocationX = useBreakpointValue({ base: "center", lg: "flex-end" });
-  const imageLocationY = useBreakpointValue({ base: "flex-end", md: "center" });
 
   return (
     <SimpleGrid
@@ -39,13 +37,13 @@ const About = () => {
         zIndex: -1,
         content: '" "',
       }}
+      px={2}
     >
       {" "}
       <Box
         d="flex"
         justifyContent={{ base: "center", lg: "flex-end" }}
-        alignItems={{ base: "flex-end", lg: "center" }}
-        p={16}
+        p={{ base: "4", lg: "16" }}
       >
         <Image
           src={user.profileImage}
