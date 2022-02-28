@@ -5,58 +5,62 @@ import {
   Flex,
   HStack,
   IconButton,
-  Link,
+  // Link,
   Stack,
+  Text,
   useBreakpointValue,
   useColorMode,
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
+import { useState } from "react";
+import { Link } from "react-scroll";
 
-const NavLink = ({ children, navChange }) => {
+const NavLink = ({ children, active, handleSetActive }) => {
   return (
     <Link
-      px={2}
-      py={1}
-      rounded={"md"}
-      _hover={{
-        textDecoration: "none",
-        // bg: useColorModeValue("gray.200", "gray.700"),
-        textColor: "red",
-        transform: "scale(1.05)",
-      }}
-      _focus={{
-        border: "none",
-        textColor: "red",
-      }}
-      href={children.external ? children.path : "#"}
-      isExternal={children.external}
-      onClick={() => {
-        navChange(children.path);
-      }}
-      textColor={"white"}
-      fontFamily="sans-serif"
-      fontWeight={"600"}
+      activeClass="active"
+      to={children.path}
+      spy={true}
+      smooth={true}
+      // offset={10}
+      duration={500}
+      onSetActive={handleSetActive}
     >
-      {children.name}
+      <Text
+        px={2}
+        py={1}
+        textColor={
+          active === children.path
+            ? "red"
+            : active !== "home"
+            ? useColorModeValue("black.100", "white.900")
+            : "white"
+        }
+        fontFamily="sans-serif"
+        fontWeight={"600"}
+        cursor="pointer"
+      >
+        {children.name}
+      </Text>
     </Link>
   );
 };
 
 const NavBar = (navChange) => {
   const navLinks = [
-    { name: "HOME", path: "/home" },
+    { name: "HOME", path: "home" },
     {
       name: "ABOUT",
-      path: "/about",
+      path: "about",
     },
     {
       name: "RESUME",
-      path: "/resume",
+      path: "resume",
     },
     {
       name: "PROJECTS",
-      path: "/projects",
+      path: "projects",
       //   external: true,
     },
     // {
@@ -68,10 +72,17 @@ const NavBar = (navChange) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const [active, setActive] = useState("home");
+  const handleSetActive = (e) => {
+    console.log("chanr e", e);
+    setActive(e);
+  };
+
   return (
     <>
       <Box
         // bg={useColorModeValue("gray.100", "gray.900")}
+        bg={active !== "home" && useColorModeValue("gray.100", "gray.900")}
         px={4}
         w="100%"
         position={"fixed"}
@@ -79,7 +90,7 @@ const NavBar = (navChange) => {
       >
         <Flex justifyContent={"space-between"}>
           <Box display={useBreakpointValue({ base: "none", md: "1" })}></Box>
-          <Flex h={16} alignItems={"center"} justifyContent={"center"}>
+          <Flex h={12} alignItems={"center"} justifyContent={"center"}>
             <IconButton
               size={"md"}
               icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -95,7 +106,7 @@ const NavBar = (navChange) => {
                 display={{ base: "none", md: "flex" }}
               >
                 {navLinks.map((link) => (
-                  <NavLink key={link} {...navChange}>
+                  <NavLink key={link} {...{ active, handleSetActive }}>
                     {link}
                   </NavLink>
                 ))}
@@ -113,14 +124,14 @@ const NavBar = (navChange) => {
           <Box
             pb={4}
             display={{ md: "none" }}
-            bg={useColorModeValue("white", "gray.800")}
+            bg={useColorModeValue("gray:100", "gray.800")}
             shadow="lg"
             rounded="lg"
             overflow="hidden"
           >
             <Stack as={"nav"} spacing={4}>
               {navLinks.map((link) => (
-                <NavLink key={link} {...navChange}>
+                <NavLink key={link} {...{ active, handleSetActive }}>
                   {link}
                 </NavLink>
               ))}

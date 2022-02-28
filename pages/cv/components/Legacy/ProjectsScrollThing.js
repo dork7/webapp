@@ -1,7 +1,7 @@
 import { Button, HStack } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState } from "react";
-import { useUserDataSet } from "../hooks/useUserDataSet";
-import ProjectCard from "./Cards/ProjectCard";
+import { useUserDataSet } from "../../hooks/useUserDataSet";
+import ProjectCard from "../Cards/ProjectCard";
 const Projects = () => {
   const user = useUserDataSet();
   const ref = useRef();

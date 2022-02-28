@@ -22,48 +22,13 @@ const CV = () => {
 
   const navChange = (navLink) => {
     console.log("navLink", navLink);
-    scroller.scrollTo(navLink.split("/")[1], {
-      duration: 800,
-      delay: 0,
-      smooth: "easeInOutQuart",
-    });
+    // scroller.scrollTo(navLink.split("/")[1], {
+    //   duration: 800,
+    //   delay: 0,
+    //   smooth: "easeInOutQuart",
+    // });
   };
 
-  const scrollToTop = () => {
-    scroll.scrollToTop();
-  };
-
-  const scrollTo = () => {
-    scroller.scrollTo("test3", {
-      duration: 800,
-      delay: 0,
-      smooth: "easeInOutQuart",
-    });
-  };
-
-  const scrollToWithContainer = () => {
-    let goToContainer = new Promise((resolve, reject) => {
-      Events.scrollEvent.register("end", () => {
-        resolve();
-        Events.scrollEvent.remove("end");
-      });
-
-      scroller.scrollTo("scroll-container", {
-        duration: 800,
-        delay: 0,
-        smooth: "easeInOutQuart",
-      });
-    });
-
-    goToContainer.then(() =>
-      scroller.scrollTo("scroll-container-second-element", {
-        duration: 800,
-        delay: 0,
-        smooth: "easeInOutQuart",
-        containerId: "scroll-container",
-      })
-    );
-  };
   const downButtonClicked = () => {
     scroller.scrollTo("about", {
       duration: 800,
@@ -93,6 +58,7 @@ const CV = () => {
         <Element name="projects" className="element">
           <Projects />
         </Element>
+
         {/* <Button onClick={scrollToTop}>top</Button> */}
         <Footer />
       </Box>
