@@ -60,7 +60,7 @@ const Skills = () => {
 
         // w="full"
       >
-        {user?.skills?.map((skill) => {
+        {user?.skills?.map((skill, idx) => {
           return (
             <>
               <Badge
@@ -72,6 +72,7 @@ const Skills = () => {
                 variant="solid"
                 colorScheme="brand"
                 rounded="full"
+                key={`skill-${idx}`}
               >
                 {skill}
               </Badge>

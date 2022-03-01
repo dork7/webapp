@@ -21,11 +21,11 @@ const Projects = () => {
           </Heading>
         </Stack>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
+          {/* <HStack key={`project-${idx}`} align={"top"}> */}
           {user?.projects.map((project, idx) => (
-            <HStack key={idx} align={"top"}>
-              <ProjectCard {...{ project }} />
-            </HStack>
+            <ProjectCard key={`project-${idx}`} {...{ project }} />
           ))}
+          {/* </HStack> */}
         </SimpleGrid>
       </Box>
     </>

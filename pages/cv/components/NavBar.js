@@ -16,7 +16,7 @@ import {
 import { useState } from "react";
 import { BsArrowUpShort } from "react-icons/bs";
 import { animateScroll as scroll, Link } from "react-scroll";
-import ToTop from "./Button/ToTop";
+import ToTop from "./Buttons/ToTop";
 
 const NavLink = ({ children, active, handleSetActive }) => {
   return (
@@ -109,7 +109,7 @@ const NavBar = (navChange) => {
                 display={{ base: "none", md: "flex" }}
               >
                 {navLinks.map((link) => (
-                  <NavLink key={link} {...{ active, handleSetActive }}>
+                  <NavLink key={`web-${link}`} {...{ active, handleSetActive }}>
                     {link}
                   </NavLink>
                 ))}
@@ -143,6 +143,7 @@ const NavBar = (navChange) => {
         ) : null}
       </Box>
       {active !== "home" && <ToTop />}
+
       {/* <Box p={4}>Main Content Here</Box> */}
     </>
   );

@@ -58,7 +58,7 @@ const Experience = () => {
         justifyContent="center"
         pr={{ base: 4, lg: 12 }}
       >
-        {user.experience.map((exp) => {
+        {user?.experience?.map((exp, idx) => {
           return (
             <>
               <Badge
@@ -70,6 +70,7 @@ const Experience = () => {
                 variant="solid"
                 colorScheme="brand"
                 rounded="full"
+                key={`exp-${idx}`}
               >
                 {exp.designation}
               </Badge>

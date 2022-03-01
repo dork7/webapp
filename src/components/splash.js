@@ -108,7 +108,7 @@ export const Splash = () => {
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {cards.map((card, index) => (
           <Box
-            key={index}
+            key={`splash-${index}`}
             height={"6xl"}
             position="relative"
             backgroundPosition="center"
