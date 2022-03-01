@@ -15,7 +15,8 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsArrowUpShort } from "react-icons/bs";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { animateScroll as scroll, Link } from "react-scroll";
+import ToTop from "./Button/ToTop";
 
 const NavLink = ({ children, active, handleSetActive }) => {
   return (
@@ -33,7 +34,7 @@ const NavLink = ({ children, active, handleSetActive }) => {
         py={1}
         textColor={
           active === children.path
-            ? "red"
+            ? "#FF6347"
             : active !== "home"
             ? useColorModeValue("black.100", "white.900")
             : "white"
@@ -83,7 +84,8 @@ const NavBar = (navChange) => {
     <>
       <Box
         // bg={useColorModeValue("gray.100", "gray.900")}
-        bg={active !== "home" && useColorModeValue("gray.100", "gray.900")}
+        // bg={active !== "home" && useColorModeValue("gray.100", "gray.900")}
+        bgGradient="linear(rgba(0, 0, 0, .9),  rgba(0, 0, 0, .1)  )"
         px={4}
         w="100%"
         position={"fixed"}
@@ -140,17 +142,7 @@ const NavBar = (navChange) => {
           </Box>
         ) : null}
       </Box>
-      {active !== "home" && (
-        <Button
-          zIndex={998}
-          position={"fixed"}
-          bottom="40px"
-          right={"40px"}
-          onClick={() => scroll.scrollToTop()}
-        >
-          <BsArrowUpShort size="md" />
-        </Button>
-      )}
+      {active !== "home" && <ToTop />}
       {/* <Box p={4}>Main Content Here</Box> */}
     </>
   );

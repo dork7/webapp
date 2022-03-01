@@ -61,7 +61,7 @@ const Resume = () => {
 
         // w="full"
       >
-        {user.education.map((edu) => {
+        {user.education.map((edu, idx) => {
           return (
             <>
               <Badge
@@ -73,6 +73,7 @@ const Resume = () => {
                 variant="solid"
                 colorScheme="brand"
                 rounded="full"
+                key={idx}
               >
                 {edu.title}
               </Badge>

@@ -15,7 +15,6 @@ import {
 } from "@chakra-ui/react";
 import Info from "./Cards/Info";
 import { AiFillDownCircle } from "react-icons/ai";
-
 const Splash = ({ downButtonClicked }) => {
   const arrowStyles = {
     display: "none",
