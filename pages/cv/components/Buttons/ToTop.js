@@ -32,9 +32,10 @@ const ToTop = ({}) => {
         // bottom="40px"
         // right={"40px"}
         borderRadius="full"
+        overflow={"hidden"}
         onClick={() => scroll.scrollToTop()}
       >
-        <BsArrowUpShort size="md" color="#FF6347" />
+        <BsArrowUpShort size="30px" color="#FF6347" />
       </Button>
     </motion.div>
   );

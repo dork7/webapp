@@ -135,7 +135,7 @@ const Splash = ({ downButtonClicked }) => {
             bg="none"
             borderRadius={20}
             overflow="hidden"
-            icon={<AiFillDownCircle size="lg" />}
+            icon={<AiFillDownCircle size="45px" />}
             onClick={downButtonClicked}
           />
           {/* {Array.from({ length: slidesCount }).map((_, slide) => (
