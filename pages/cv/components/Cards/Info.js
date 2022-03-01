@@ -15,7 +15,6 @@ import { motion } from "framer-motion";
 
 const Info = () => {
   const user = useUserDataSet();
-  const descWidth = useBreakpointValue({ base: "100%", md: "40%" });
 
   return (
     <>
@@ -37,17 +36,28 @@ const Info = () => {
         }}
       >
         <Flex justify={"center"} direction="column">
-          <Heading fontSize={{ base: "2xl", md: "4xl", lg: "6xl" }}>
-            I'm {user.name}.
-          </Heading>
-          <Text
-            fontSize={{ base: "md", lg: "xl" }}
-            w={descWidth}
+          <Box
+            bg="rgb(0,0,0, 0.8)"
+            // w={{ base: "md", md: "xl", lg: "xl" }}
+            d="flex"
+            flexDir={"column"}
             alignSelf={"center"}
+            justifyContent={"center"}
+            p={12}
+            borderRadius={44}
           >
-            {user.description}
-          </Text>
-          <MediaLinks />
+            <Heading fontSize={{ base: "2xl", md: "4xl", lg: "6xl" }}>
+              I'm {user.name}.
+            </Heading>
+            <Text
+              fontSize={{ base: "md", lg: "xl" }}
+              w={{ base: "100%", md: "60%" }}
+              alignSelf={"center"}
+            >
+              {user.description}
+            </Text>
+            <MediaLinks alignSelf={"center"} />
+          </Box>
         </Flex>
       </motion.div>
     </>

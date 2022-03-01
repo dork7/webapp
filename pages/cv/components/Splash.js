@@ -15,7 +15,9 @@ import {
 } from "@chakra-ui/react";
 import Info from "./Cards/Info";
 import { AiFillDownCircle } from "react-icons/ai";
+import { useUserDataSet } from "../hooks/useUserDataSet";
 const Splash = ({ downButtonClicked }) => {
+  const { bgImage } = useUserDataSet();
   const arrowStyles = {
     display: "none",
     cursor: "pointer",
@@ -54,7 +56,7 @@ const Splash = ({ downButtonClicked }) => {
     //     "Praesent commodo cursus magna, vel scelerisque nisl consectetur.",
     // },
     {
-      img: "https://images.pexels.com/photos/1142950/pexels-photo-1142950.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      img: bgImage, // "https://images.pexels.com/photos/1142950/pexels-photo-1142950.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     },
     // {
     //   img: "https://images.pexels.com/photos/3124111/pexels-photo-3124111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -112,7 +114,7 @@ const Splash = ({ downButtonClicked }) => {
               <Stack
                 p="8px 12px"
                 pos="absolute"
-                top={{ base: "30%", md: "40%" }}
+                top={{ base: "20%", md: "30%" }}
                 textAlign="center"
                 w="full"
                 mb="8"
